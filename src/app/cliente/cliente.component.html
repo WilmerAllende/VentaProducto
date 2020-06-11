@@ -1,0 +1,34 @@
+<div class="example-button-row">
+  <button mat-raised-button color="primary" (click)="openAdd()">
+    Nuevo Cliente
+  </button>
+</div>
+<mat-table [dataSource]="lst" class="mat-elevation-z8">
+  <!-- Position Column -->
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef> # </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{ element.id }} </mat-cell>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="nombre">
+    <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{ element.nombre }} </mat-cell>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="acciones">
+    <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <button mat-raised-button color="basic" (click)="openEdit(element)">
+        Editar
+      </button>
+      <button mat-raised-button color="warn" (click)="eliminar(element)">
+        Eliminar
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="columnas"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: columnas"></mat-row>
+</mat-table>
